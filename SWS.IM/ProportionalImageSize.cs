@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace SWS.IM
+namespace SWS.Plug
 {
     public class ProportionalImageSize : IImageSize
     {
@@ -12,7 +12,7 @@ namespace SWS.IM
             _image = image;
         }
 
-        public Size GetSize(int width, int height)
+        public Size CalculateSize(int width, int height)
         {
             double imgWidth = _image.Width;
             double imgHeight = _image.Height;

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWS.IM", "SWS.IM\SWS.IM.csproj", "{6C26BEF6-386D-4498-AB7E-33C01FE518D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWS.Plug", "SWS.IM\SWS.Plug.csproj", "{6C26BEF6-386D-4498-AB7E-33C01FE518D9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM", "IM", "{1366BBF7-8C5A-49C8-B3B8-85416F97963C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PLUG", "PLUG", "{1366BBF7-8C5A-49C8-B3B8-85416F97963C}"
 	ProjectSection(SolutionItems) = preProject
 		img\family guy.jpg = img\family guy.jpg
 	EndProjectSection
@@ -29,8 +29,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CE39A620-9BF1-41FC-876D-BAFC81A978F2} = {1366BBF7-8C5A-49C8-B3B8-85416F97963C}
 		{6C26BEF6-386D-4498-AB7E-33C01FE518D9} = {1366BBF7-8C5A-49C8-B3B8-85416F97963C}
+		{CE39A620-9BF1-41FC-876D-BAFC81A978F2} = {1366BBF7-8C5A-49C8-B3B8-85416F97963C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = .

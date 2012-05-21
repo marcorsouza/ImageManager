@@ -1,19 +1,22 @@
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace SWS.IM
+namespace SWS.Plug
 {
     public abstract class ImageManager
     {
-        public ImageParameter ImageParameter { get; private set; }
+        public ImageProperty ImageProperty { get; private set; }
         protected Image Image;
         public Image NewImage { get; protected set; }
         private IImageSize _imageSize;
         private IImageCrop _imageCrop;
-        
-        private readonly WaterMark _waterMark;
+        private IImageSharpen _imageSharpen;
+        private bool isBinding = false;
 
-        protected abstract void Builder();
+        readonly WaterMark _waterMark;
+
+        protected abstract void Bind();
 
         public void SetImageSize(IImageSize imageSize)
         {
@@ -25,9 +28,14 @@ namespace SWS.IM
             _imageCrop = imageCrop;
         }
 
-        public Size GetSize()
+        public void SetImageSharpen(IImageSharpen imageSharpen)
         {
-            return _imageSize.GetSize(ImageParameter.Width, ImageParameter.Height);
+            _imageSharpen = imageSharpen;
+        }
+
+        public Size CalculateSize()
+        {
+            return _imageSize.CalculateSize(ImageProperty.Width, ImageProperty.Height);
         }
 
         protected void Crop(Rectangle rectangle)
@@ -35,18 +43,37 @@ namespace SWS.IM
             NewImage = _imageCrop.Crop(NewImage, rectangle);
         }
 
-        protected ImageManager(Image image, ImageParameter imageParameter,WaterMark waterMark = null)
+        public void Sharpen()
+        {
+            TryBind();
+
+            NewImage = _imageSharpen.Sharpen(NewImage);
+        }
+
+        public bool TryBind()
+        {
+            if (isBinding == false)
+            {
+                Bind();
+                isBinding = true;
+            }
+
+            return isBinding;
+        }
+
+        protected ImageManager(Image image, ImageProperty imageProperty,WaterMark waterMark = null)
         {
             Image = image;
             _waterMark = waterMark;
-            ImageParameter = imageParameter;
+            ImageProperty = imageProperty;
 
             SetImageCrop(new CustomImageCrop());
+            SetImageSharpen(new ImageSharpen());
         }
         
         public void Save(string fileName, ImageFormat imageFormat=null)
         {
-            Builder();
+            TryBind();
 
             if (_waterMark != null)
                 NewImage = _waterMark.Create(NewImage);

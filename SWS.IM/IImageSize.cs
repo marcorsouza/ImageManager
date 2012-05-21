@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
 
-namespace SWS.IM
+namespace SWS.Plug
 {
     public interface IImageSize
     {
-        Size GetSize(int width, int height);
+        Size CalculateSize(int width, int height);
     }
 }

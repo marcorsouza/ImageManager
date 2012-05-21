@@ -1,27 +1,28 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace SWS.IM
+namespace SWS.Plug
 {
     public class ResizeImageManager : ImageManager
     {
         private Size _size;
-        public ResizeImageManager(Image image, ImageParameter imageParameter) 
-            : base(image, imageParameter)
+        public ResizeImageManager(Image image, ImageProperty imageProperty) 
+            : base(image, imageProperty)
         {
             SetImageSize(new ProportionalImageSize(image));
         }
 
-        protected override void Builder()
+        protected override void Bind()
         {
             //Pega dimensões proporcionais da image
-            _size = GetSize();
+            _size = CalculateSize();
 
             //Redimenciona a imagem 
             Resize();
 
             //Corta imagem
-            Crop();
+            if (!((ResizeImageProperty)ImageProperty).PreserveAspectRatio)
+                Crop();
         }
 
         private void Crop()
@@ -29,28 +30,28 @@ namespace SWS.IM
             var x = 0;
             var y = 0;
 
-            if (ImageParameter.Height > ImageParameter.Width)
+            if (ImageProperty.Height > ImageProperty.Width)
             {
-                if (_size.Width > ImageParameter.Width)
+                if (_size.Width > ImageProperty.Width)
                 {
-                    x = (_size.Width - ImageParameter.Width)/2;
+                    x = (_size.Width - ImageProperty.Width)/2;
                 }
             }
-            if (ImageParameter.Width > ImageParameter.Height)
+            if (ImageProperty.Width > ImageProperty.Height)
             {
-                if (_size.Height > ImageParameter.Height)
+                if (_size.Height > ImageProperty.Height)
                 {
-                    y = (_size.Height - ImageParameter.Height)/2;
+                    y = (_size.Height - ImageProperty.Height)/2;
                 }
             }
 
-            Crop(new Rectangle(x, y, ImageParameter.Width, ImageParameter.Height));
+            Crop(new Rectangle(x, y, ImageProperty.Width, ImageProperty.Height));
         }
 
         private void Resize()
         {
-            var width = ImageParameter.Width;
-            var height = ImageParameter.Height;
+            var width = ImageProperty.Width;
+            var height = ImageProperty.Height;
 
             if (_size.Width > width)
                 width = _size.Width;

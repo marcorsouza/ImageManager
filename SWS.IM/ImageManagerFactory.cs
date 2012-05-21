@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace SWS.IM
+namespace SWS.Plug
 {
     public enum ImageManagerType
     {
@@ -9,7 +9,7 @@ namespace SWS.IM
 
     public class ImageManagerFactory
     {
-        public static ImageManager Create(ImageManagerType manager, Image image, ImageParameter parameterManager)
+        public static ImageManager Create(ImageManagerType manager, Image image, ImageProperty parameterManager)
         {
             ImageManager imageManager = null;
 

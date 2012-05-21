@@ -8,8 +8,8 @@
     <ProjectGuid>{CE39A620-9BF1-41FC-876D-BAFC81A978F2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SWS.IM.Tests</RootNamespace>
-    <AssemblyName>SWS.IM.Tests</AssemblyName>
+    <RootNamespace>SWS.Plug.Tests</RootNamespace>
+    <AssemblyName>SWS.Plug.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,16 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMTest.cs" />
+    <Compile Include="PlugTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SWS.IM\SWS.IM.csproj">
+    <ProjectReference Include="..\SWS.IM\SWS.Plug.csproj">
       <Project>{6C26BEF6-386D-4498-AB7E-33C01FE518D9}</Project>
-      <Name>SWS.IM</Name>
+      <Name>SWS.Plug</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

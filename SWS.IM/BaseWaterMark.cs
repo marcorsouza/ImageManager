@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace SWS.IM
+namespace SWS.Plug
 {
     public abstract class BaseWaterMark:WaterMark
     {
