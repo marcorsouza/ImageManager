@@ -12,6 +12,7 @@ namespace SWS.IM
         public static ImageManager Create(ImageManagerType manager, Image image, ImageParameter parameterManager)
         {
             ImageManager imageManager = null;
+
             switch (manager)
             {
                 case ImageManagerType.Resize:
